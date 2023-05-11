@@ -1,8 +1,8 @@
 ARG BASE_IMAGE=alpine
 
-FROM --platform=linux/arm64 tonistiigi/xx:1.2.1@sha256:8879a398dedf0aadaacfbd332b29ff2f84bc39ae6d4e9c0a1109db27ac5ba012 AS xx
+FROM --platform=linux/amd64 tonistiigi/xx:1.2.1@sha256:8879a398dedf0aadaacfbd332b29ff2f84bc39ae6d4e9c0a1109db27ac5ba012 AS xx
 
-FROM --platform=linux/arm64 golang:1.20.4-alpine3.16 AS builder
+FROM --platform=linux/amd64 golang:1.20.4-alpine3.16 AS builder
 
 COPY --from=xx / /
 
