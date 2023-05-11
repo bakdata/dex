@@ -1,0 +1,16 @@
+name: Publish Docker image
+
+on:
+    push:
+
+jobs:
+    build_and_publish_docker:
+        name: Build and publish docker image
+        uses: bakdata/ci-templates/.github/workflows/docker-build-and-publish.yaml@v1.18.1
+        with:
+            docker-registry: "us.gcr.io"
+            image-namespace: "gcp-bakdata-cluster"
+        secrets:
+            docker-user: "_json_key"
+            docker-password: "${{ secrets.GCR_BAKDATA_DEV_TOKEN }}"
+            github-token: ${{ secrets.GH_TOKEN }}
